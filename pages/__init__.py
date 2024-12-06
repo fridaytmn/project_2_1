@@ -63,20 +63,6 @@ SELECT_OPTIONS_SHOW_UNVISITED_URLS = 1  # значение при выборе �
 SELECT_OPTIONS_DONT_SHOW_UNVISITED_URLS = 0  # значение при выборе параметра Показывать непосещенные URL - нет
 REGIONS_ALL = "all"  # выбор всех регионов, английский вариант
 EMPTY_ROW = ""  # пустая строка
-SIMA_RECOMMENDATIONS_PERSONAL = "sima_rs_test_1"  # система персональных рекомендаций
-SIMA_RECOMMENDATIONS_POPULAR = "sima_rs_test_2"  # система рекомендаций "Популярные в категории"
-SIMA_RECOMMENDATIONS_ALSO_RECOMMEND = "sima_rs_test_3"  # система рекомендаций "Также рекомендуем"
-SIMA_RECOMMENDATIONS_SIMILAR = "sima_rs_test_4"  # система рекомендаций "Похожие"
-SIMA_RECOMMENDATIONS_SEARCH = "sima_rs_test_5"  # система рекомендаций поисковая
-SIMA_RECOMMENDATIONS_DS_LABEL = "Data Science"  # лейбл систем рекомендаций, относящиеся к Data Science
-SIMA_RECOMMENDATIONS_DS_VALUES = [
-    SIMA_RECOMMENDATIONS_PERSONAL,
-    SIMA_RECOMMENDATIONS_POPULAR,
-    SIMA_RECOMMENDATIONS_ALSO_RECOMMEND,
-    SIMA_RECOMMENDATIONS_SIMILAR,
-    SIMA_RECOMMENDATIONS_SEARCH,
-]  # системы рекомендаций, относящиеся к Data Science
-
 QUERIES_LABEL_ZERO_AND_PARTIAL_SUGGESTION = "нулевые + неточный"  # нулевые поисковые запросы и неточный поиск на сайте
 QUERIES_LABEL_ZERO = "нулевые запросы"  # нулевые поисковые запросы на сайте
 QUERIES_LABEL_PARTIAL_SUGGESTION = "неточный поиск"  # неточный поиск на сайте
