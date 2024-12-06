@@ -1,0 +1,132 @@
+.tv-page {
+    background: #3a3a3b;
+    color: #fff;
+    min-height: 100vh;
+    padding: 3vh 5vh;
+    width: 100%;
+}
+
+.tv-page .form-inline-wrapper .DateInput_input {
+    color: #fff;
+}
+
+.map-wrapper {
+    margin: 4px 0 28px;
+}
+
+.tv-page .table-wrapper .dropdown,
+.tv-page .table-wrapper .header-table-search,
+.tv-page .table-wrapper .dash-filter,
+.tv-page .table-wrapper .column-header--sort,
+.tv-page .table-wrapper .column-header--sort svg
+.tv-page .table-wrapper th svg,
+.tv-page h1.title,
+.tv-page .stat_button {
+    display: none;
+}
+
+.tv-page .table-wrapper .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    background: none;
+    border: none !important;
+    border-bottom: 1px solid #aaa !important;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+
+.tv-page .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr {
+    min-height: 0;
+    height: 0;
+}
+
+.tv-page .table-wrapper .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: #0f683a;
+    border: none !important;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 5px;
+}
+
+.tv-page .body-table-wrapper .dash-spreadsheet-container {
+    border: none;
+}
+
+.tv-page .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner :not(.cell--selected) tr:hover,
+.tv-page .dash-table-container .dash-spreadsheet-container tr:hover input :not(.cell--selected) {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tv-page .table-wrapper .dash-table-container .previous-next-container .previous-page,
+.tv-page .table-wrapper .dash-table-container .previous-next-container .next-page,
+.tv-page .table-wrapper .dash-table-container .previous-next-container .current-page-container,
+.tv-page .table-wrapper .dash-table-container .previous-next-container .page-number .last-page {
+    background: #6e6d6d;
+    border-color: #7e7e81;
+}
+
+.tv-page .table-wrapper .dash-table-container .previous-next-container .page-number .current-page-container input.current-page {
+    border-radius: 4px;
+}
+
+.tv-page .form-control {
+    background: #3a3a3b;
+    color: #fff;
+}
+
+.tv-page .form-control:focus {
+    border-color: #0f683a;
+}
+
+.tv-page .form-inline-wrapper {
+    align-items: center;
+    display: flex;
+    max-width: 100%;
+    margin: 0 0 32px;
+}
+
+.tv-page .form-inline-wrapper .title-tv {
+    flex-shrink: 0;
+    font-size: 28px;
+    margin: 0;
+    margin-right: 32px;
+}
+
+.tv-page .form-inline-wrapper .btn {
+    background: #212121;
+}
+
+.tv-page .form-inline-wrapper .btn:hover {
+    background: rgba(255,255,255,.12);
+}
+
+.tv-page .form-inline-wrapper .form-inline label {
+    font-size: 12px;
+}
+
+.tv-page .advertising-info-table {
+    align-items: center;
+    display: flex;
+    font-size: 28px;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+.tv-page .advertising-info-row {
+    margin: 0 auto 32px;
+    padding: 0 25%;
+}
+
+.tv-page .advertising-info-col {
+    margin: 0 auto 32px;
+    width: 45%;
+}
+
+.tv-page .advertising-info-table h2 {
+    font-size: 18px;
+}
+
+.tv-page .graph-col .col {
+    margin-bottom: 32px;
+}
+
+.tv-page .graph-col label {
+    margin-bottom: 32px;
+}

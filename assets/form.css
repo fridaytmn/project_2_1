@@ -1,0 +1,147 @@
+.form-inline-wrapper {
+  margin: 0 0 56px;
+}
+
+.form-inline-wrapper #dates {
+  width: 100%;
+}
+
+.form-inline-wrapper .Select-control {
+    white-space: nowrap;
+}
+
+.form-inline-wrapper h6,
+.form-inline-wrapper .form-inline label,
+.form-inline-wrapper label {
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: flex-start;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.form-inline-wrapper .form-inline,
+.form-inline-wrapper > .row {
+  align-items: flex-end;
+}
+
+.form-inline-wrapper .form-control {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #212121;
+  min-height: 40px;
+  color: #212121;
+  padding: 8px 12px;
+  width: 100%;
+  min-width: 240px;
+}
+
+.form-inline-wrapper .form-control:focus {
+  border: 1px solid #1F84DB;
+  box-shadow: none;
+}
+
+.form-inline-wrapper .DateRangePicker {
+  width: 320px;
+}
+
+.form-inline-wrapper .DateRangePickerInput__withBorder {
+  border: none;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-inline-wrapper .DateInput {
+  width: calc(50% - 15px);
+}
+
+.form-inline-wrapper .DateInput_input,
+.form-inline-wrapper .DateInput_input_1 {
+  background: url(../static/calendar.svg) no-repeat calc(100% - 8px) 50%;
+  border: 1px solid #e0e0e0;
+  color: #212121;
+  width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 8px 40px 8px 12px;
+}
+
+.form-inline-wrapper .DateRangePickerInput_arrow {
+  display: none;
+}
+
+.form-inline-wrapper .custom-select {
+  appearance: none;
+  background: url(../static/arrow-sort.svg) no-repeat calc(100% - 12px) 50%;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+  color: #212121;
+  height: 40px;
+}
+
+.form-inline-wrapper .custom-select:focus {
+  border-color: #1F84DB;
+}
+
+.form-inline-wrapper .custom-select option {
+  padding: 8px 12px;
+}
+
+.form-inline-wrapper .custom-select option:hover {
+  background: #f5f5f5;
+  padding: 8px 12px;
+}
+
+.form-inline-wrapper .Select-menu-outer {
+  border: none;
+  margin-top: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 4%), 0 12px 30px rgb(0 0 0 / 10%);
+  min-width: 100%;
+  padding: 8px 0;
+}
+
+.form-inline-wrapper .btn {
+  background: #1F84DB;
+  border: none;
+  color: #fff;
+  max-width: 200px;
+  padding: 8px 12px;
+  min-width: 132px;
+}
+
+.form-inline-wrapper .btn:hover {
+  background-color: #1b74c1;
+}
+
+.form-inline-wrapper .form-select {
+    width: fit-content;
+    max-width: 320px;
+    min-width: 120px;
+}
+
+.form-inline-wrapper > .row {
+    margin-top: -16px;
+}
+
+.form-inline-wrapper > .row > .col,
+.form-inline-wrapper > .row > .col-2,
+.form-inline-wrapper > .row > .col-3,
+.form-inline-wrapper > .row > .col-4,
+.form-inline-wrapper > .row > .col-5,
+.form-inline-wrapper > .row > .col-6,
+.form-inline-wrapper > .row > .col-7,
+.form-inline-wrapper > .row > .col-8,
+.form-inline-wrapper > .row > .col-9,
+.form-inline-wrapper > .row > .col-10,
+.form-inline-wrapper > .row > .col-auto {
+    flex: 0 0 0;
+    padding-top: 16px;
+    width: auto;
+}
+.form-inline-wrapper > .row + .row {
+margin-top: 16px;}

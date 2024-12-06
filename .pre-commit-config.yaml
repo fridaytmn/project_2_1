@@ -1,0 +1,34 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-docstring-first
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=600']
+      - id: debug-statements
+      - id: name-tests-test
+      - id: requirements-txt-fixer
+#- repo: https://github.com/PyCQA/isort
+#  rev: 5.9.3
+#  hooks:
+#      - id: isort
+#        args: ["--profile", "black", "--filter-files"]
+-   repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+    -   id: black
+        language_version: python3.12
+-   repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+    -   id: flake8
+        additional_dependencies:
+          - flake8-bugbear==24.8.19
+          - pep8-naming==0.14.1
+          - flake8-eradicate==1.5.0
+          - flake8-comprehensions==3.15.0
+          - flake8-use-fstring==1.4
+          - flake8-print==5.0.0

@@ -1,0 +1,270 @@
+h2 {
+ margin-bottom: 2rem;
+}
+
+input::placeholder {
+  color: #9e9e9e;
+}
+
+.custom-switch {
+  padding-left: 56px;
+}
+
+.custom-control-label {
+  font-weight: 500;
+}
+
+.custom-switch .custom-control-label::before {
+  left: -56px;
+  width: 44px;
+  border-radius: 100px;
+}
+
+.custom-switch .custom-control-label::before {
+  background-color: #e0e0e0;
+  border: none;
+  height: 24px;
+  top: 0;
+}
+
+.custom-switch .custom-control-label::after {
+  background: #fff;
+  height: 20px;
+  left: -54px;
+  top: 2px;
+  width: 20px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 100px;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::before {
+  background: #1F84DB;
+  bottom: none;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+  transform: translateX(20px);
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
+.cell-table .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
+.table-wrapper table th,
+.table-wrapper .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+  background: #fafafa;
+  border: 1px solid #E0E0E0;
+  color: #545455;
+  font-size: 14px;
+  font-family: -apple-system,BlinkMacSystemFont,'SF Pro','Source Sans Pro',"Segoe UI",Roboto,"Helvetica Neue",Ubuntu;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 18px 8px;
+  text-align: left;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td,
+.cell-table .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td,
+.table-wrapper table td,
+.table-wrapper .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+  border: 1px solid #E0E0E0 !important;
+  font-family:  -apple-system,BlinkMacSystemFont,'SF Pro','Source Sans Pro',"Segoe UI",Roboto,"Helvetica Neue",Ubuntu;
+  font-size: 16px;
+  padding: 16px 8px;
+}
+
+button.export,
+.download-button {
+  background: #ebebeb url(../static/download.svg) no-repeat 12px 50%;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  padding: 8px 20px 8px 48px;
+}
+
+button.export:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-container {
+  margin-bottom: 56px;
+}
+
+.page-content .tab-container .tab {
+  background: none;
+  border: none;
+  color: #9e9e9e;
+  font-weight: 500;
+  margin-right: 24px;
+  padding: 0 0 8px;
+  width: auto;
+}
+
+.page-content .tab-container .tab.tab--selected {
+  border: none;
+  border-bottom: 2px solid #1F84DB;
+  color: #212121;
+}
+
+.page-content .tab-container .tab:last-of-type {
+  border: none;
+}
+
+@media screen and (min-width: 800px) {
+  .page-content .tab-container  .tab {
+    width: auto;
+  }
+  .page-content .tab-container .tab.tab--selected,
+  .page-content .tab-container  .tab:last-of-type.tab--selected {
+    border: none;
+    border-bottom: 2px solid #1F84DB;
+  }
+}
+
+.table-wrapper .dash-table-container .previous-next-container {
+  display: flex;
+  float: none;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.table-wrapper .previous-next-container .page-number {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.table-wrapper .dash-table-container .previous-next-container button.first-page,
+.table-wrapper .dash-table-container .previous-next-container button.last-page {
+  display: none;
+}
+
+.table-wrapper .dash-table-container .previous-next-container .previous-page,
+.table-wrapper .dash-table-container .previous-next-container .next-page,
+.table-wrapper .dash-table-container .previous-next-container .current-page-container,
+.table-wrapper .dash-table-container .previous-next-container .page-number .last-page {
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  color: #212121;
+  font-family: -apple-system,BlinkMacSystemFont,'SF Pro','Source Sans Pro',"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 36px;
+  height: 40px;
+  min-width: 40px !important;
+}
+
+.table-wrapper .dash-table-container .previous-next-container .current-page-container {
+  background: #212121;
+  border-color: #212121;
+  color: #fff;
+}
+
+.table-wrapper .dash-table-container .previous-next-container .page-number .current-page-container .current-page-shadow,
+.table-wrapper .dash-table-container .previous-next-container .page-number .current-page-container input.current-page {
+   background: #212121;
+   border: none !important;
+   box-shadow: none;
+   color: #fff;
+   font-family: inherit;
+   font-size: 14px;
+ }
+
+ .table-wrapper .dash-table-container .previous-next-container .page-number .current-page-container input.current-page::placeholder {
+    color: #fff;
+  }
+
+.table-wrapper .dash-table-container .previous-next-container .previous-page {
+  line-height: 30px;
+  margin-right: 8px;
+}
+
+.table-wrapper .dash-table-container .previous-next-container .next-page {
+  line-height: 30px;
+  margin-left: 8px;
+}
+
+.table-wrapper .dash-table-container .previous-next-container .previous-page:hover,
+.table-wrapper .dash-table-container .previous-next-container .next-page:hover {
+  background: #f5f5f5;
+  color: #212121;
+}
+
+.VirtualizedSelectOption {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-dialog {
+  max-width: 768px;
+  width: 90%;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 8px;
+}
+
+.h-100 .modal-content {
+  height: 100%;
+}
+
+.modal-header {
+  padding: 20px 24px;
+  position: relative;
+}
+
+.modal-header .btn {
+  background: none;
+  border: none;
+  font-size: 0;
+  height: 0;
+  padding: 0;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 0;
+}
+
+.modal-header .btn:after {
+  content: '';
+  background: url(../static/close.svg) no-repeat 0 0;
+  display: block;
+  height: 24px;
+  position: absolute;
+  top: -12px;
+  right: 0;
+  width: 24px;
+}
+
+.modal-header .btn:hover {
+  opacity: 0.7;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-body {
+  padding: 32px 48px;
+}
+
+.modal-footer {
+  display: none;
+}
+
+.btn.btn-primary {
+  background: #1F84DB;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  min-width: 132px;
+}
+
+.btn.btn-primary:hover {
+  background-color: #1b74c1;
+}

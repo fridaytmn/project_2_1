@@ -1,0 +1,6 @@
+src
+.idea
+venv*
+diff
+env
+__pycache__

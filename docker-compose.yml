@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:11.21-alpine
+    hostname: "pg_server"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+    network_mode: bridge
+volumes:
+  data:
+    driver: local

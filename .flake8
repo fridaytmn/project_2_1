@@ -1,0 +1,15 @@
+[flake8]
+min_python_version = 3.12.0
+import-order-style=pycharm
+application_import_names=bank
+max-line-length=120
+ignore = W503,
+max-complexity = 4
+percent-greedy = 2
+format-greedy = 2
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    build,
+    dist

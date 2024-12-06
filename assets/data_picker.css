@@ -1,0 +1,31 @@
+.SingleDatePickerInput {
+   border: 0px;
+   background-color: inherit;
+   width: 330px;
+   height: 40px;
+   text-align: left;
+}
+.DateInput_input, .DateInput_input_1 {
+  width: 100%;
+  text-align: center;
+  line-height: calc(1.5em + 0.75rem);
+  height: calc(1.5em + 0.75rem + 2px);
+  font-size: 0.8075rem;
+  background-clip: padding-box;
+  border-radius: 4px;
+}
+.DateRangePickerInput__withBorder {
+    width: 277px;
+    height: 38px;
+    border: 1px solid #ccc;
+    display: block;
+    border-radius: 4px;
+}
+.DateInput {
+    width: 100px;
+    background: rgb(0 0 0 / 0%);
+}
+.DateRangePickerInput {
+  background-color: inherit;
+  width: auto;
+}

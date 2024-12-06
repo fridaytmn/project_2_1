@@ -1,0 +1,67 @@
+from enum import Enum
+
+from utils.pages import BaseProvider
+
+
+class Tag(Enum):
+    FILTER = "filter"
+    CONVERSION = "conversion"
+    CATEGORY = "category"
+    DELIVERY = "delivery"
+    USER = "user"
+    RECSYS = "recsys"
+    SEARCH = "search"
+    ORDER = "order"
+    PERFORMANCE = "performance"
+    ENTRANCE = "entrance"
+    CTR = "ctr"
+    CLAIM = "claim"
+
+    DESKTOP = "desktop"
+    MOBILE = "mobile"
+    APP = "app"
+
+    ECOM = "ecom"
+    BEHAVIOR = "behavior"
+    CATALOG = "catalog"
+    MISC = "misc"
+    PROMOTION = "promotion"
+    ADD = "add"
+    BANNERS = "banners"
+    PRODUCT = "product"
+    NEWS = "news"
+    CHECKOUT = "checkout"
+    PHOTO = "photo"
+    LANDING = "landing"
+    TRAFFIC = "traffic"
+    INCOME = "income"
+    ANALOGS = "analogs"
+    VIEW = "view"
+    MAIN = "main"
+    ADVERTISING = "advertising"
+    TOP = "top"
+    CART = "cart"
+    MARKETPLACE = "marketplace"
+    VIDEO = "video"
+    BALANCE = "balance"
+    RECOVERY = "recovery"
+    SUBSCRIPTIONS = "subscriptions"
+    TRADEMARK = "trademark"
+    PAYMENT = "payment"
+    PREDICTION = "prediction"
+    STORIES = "stories"
+    WISHLIST = "wishlist"
+    REGION = "region"
+    SESSION = "session"
+    ATTRIBUTION = "attribution"
+    PUSH = "push"
+    CHECK = "check"
+    AB_TEST = "ab_test"
+    WAITING_LIST = "waiting_list"
+    COUNTERPARTY = "counterparty"
+    MARKETING = "Marketing"
+    REPORT = "report"
+
+
+class TagProvider(BaseProvider[Tag]):
+    pass

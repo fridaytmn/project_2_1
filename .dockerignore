@@ -1,0 +1,11 @@
+.venv
+venv
+requirements.txt
+also_recommend_pb2*
+image_search_2_pb2*
+personal_rec_pb2*
+popular_in_category_pb2*
+popular_items_pb2*
+search_recos_pb2*
+similar_items_pb2*
+*.md
