@@ -1,14 +1,5 @@
 from dataclasses import dataclass
-
-USERS = {
-    "shvets_vv": {
-        "password": "NSsQ3DGm",
-        "ROLE": "ROLE.ADMIN",
-        "token": "IJndin1idun2iuendi2endo",
-        "refresh_token": "1111",
-    }
-}
-
+from user_log_pass import USERS
 
 class AutherError(Exception):
     """Exception raised for errors in Auth.
@@ -31,35 +22,23 @@ class AutherError(Exception):
 
 @dataclass
 class Identity:
-    token: str = ""
-    refresh_token: str = ""
+    username: str
+    roles: set
 
 
 class AutherService:
 
     @classmethod
     def get_identity(cls, username: str, password: str) -> Identity:
-        payload = {"username": username, "password": password}
-
-        res = validate_user(payload)
-        print(res)  # noqa
-
-        if res == 400:
-            raise AutherError("Ошибка входа", "Не все поля заполнены")
-        if res == 500:
+        if username not in USERS or USERS[username]["password"] != password:
             raise AutherError("Ошибка входа", "Неправильный логин или пароль")
-        return Identity(res["token"], res["refresh_token"])
+        role = USERS[username]["ROLE"]
+        return Identity(username=username, roles={role})
 
     @classmethod
-    def check(cls, token) -> bool:
-        print(token)  # noqa
-        return True
-
-
-def validate_user(payload: dict):
-
-    if payload["password"] is None or payload["username"] is None:
-        return 400
-    if not payload["password"] == USERS.get(payload["username"], {"password": ""})["password"]:
-        return 500
-    return USERS.get(payload["username"])
+    def check(cls, user) -> bool:
+        if user.username in USERS:
+            if user.roles[0] == USERS[user.username]["ROLE"]:
+                return True
+        print(user)  # noqa
+        return False

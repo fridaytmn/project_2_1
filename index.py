@@ -13,7 +13,7 @@ import templates.page
 import templates.error
 import utils
 from utils.auth import AuthManager
-from utils.user import User, ROLE
+from utils.user import User
 
 app.layout = templates.main.render(app)
 
@@ -35,7 +35,7 @@ def get_page(pathname: str, pages_provider: utils.page.PageProvider = pages.page
 def render_page(page: Page, user: User) -> Union[html.Main, html.Div]:
     if AuthManager.authorize(user=user, page=page):
         return templates.layout.render(templates.page.render(page), user)
-    if user.roles == {ROLE.GUEST}:
+    if user.roles == {"GUEST"}:
         return templates.layout.render(
             templates.error.render(
                 401,
@@ -73,7 +73,7 @@ def display_page(_, pathname: str) -> (Union[html.Main, html.Div], bool):
             return templates.layout.render(templates.error.render(423, "Отчет перемещен в архив"))
     user = AuthManager.identify(cookie=flask.request.cookies.get("dash_cookie"))
     if not AuthManager.authenticate(user=user):
-        user.roles = {ROLE.GUEST}
+        user.roles = {"GUEST"}
     return render_page(page, user)
 
 

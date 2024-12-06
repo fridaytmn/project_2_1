@@ -40,7 +40,6 @@ def render(app):
                 interval=5000,
                 n_intervals=0,
             ),
-            dcc.Store(id="sentry_url", data=os.environ.get("SENTRY_URL")),
         ]
     )
 

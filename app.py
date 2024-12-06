@@ -10,7 +10,7 @@ from dash.dependencies import Input, Output
 app = dash.Dash(
     __name__,
     external_stylesheets=[utils.styles.themes.BOOTSTRAP, utils.styles.icons.BOOTSTRAP],
-    index_string=templates.INDEX_STRING,
+    # index_string=templates.INDEX_STRING,
 )
 app.config["suppress_callback_exceptions"] = True
 app.logger.propagate = False

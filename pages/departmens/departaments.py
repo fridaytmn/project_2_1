@@ -14,7 +14,7 @@ note = """
 В отчете отображается список подразделений в компании.
 """
 
-allowed_roles = {utils.user.ROLE.ADMIN}
+allowed_roles = {"ADMIN"}
 
 
 def get_content() -> list:

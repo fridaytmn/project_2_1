@@ -5,14 +5,12 @@ from dash import callback_context
 from utils.auther_service import AutherService
 from utils.user import User, ROLE
 from utils.page import Page
+from datetime import datetime, timedelta
 
 
 DATETIME_ONE_YEAR = 365 * 24 * 60 * 60 * 1000
-
-ROLE_BY_JOB_TITLE = {
-    "admin": ROLE.ADMIN,
-    "user": ROLE.USER,
-}
+JWT_SECRET = "Tandem"  # Секретный ключ для подписи JWT
+JWT_ALGORITHM = "HS256"
 
 auther_services = AutherService()
 
@@ -27,17 +25,17 @@ class AuthManager:
                 return User(
                     username=jwt_payload.get("username", ""),
                     token=token,
-                    roles=get_user_role(jwt_payload),
+                    roles=jwt_payload.get("roles", []),
                 )
             except jwt.exceptions.DecodeError:
                 pass
-        return User(username="", roles={ROLE.GUEST}, token="")
+        return User(username="", roles={"GUEST"}, token="")
 
     @classmethod
     def authenticate(cls, user: User) -> bool:
-        if user.roles == {ROLE.GUEST}:
+        if user.roles == {"GUEST"}:
             return True
-        return auther_services.check(user.token)
+        return auther_services.check(user)
 
     @classmethod
     def authorize(cls, page: Page, user: User) -> bool:
@@ -49,15 +47,15 @@ class AuthManager:
 
     @classmethod
     def get_token(cls, username: str, password: str) -> str:
-        result = auther_services.get_identity(username=username, password=password)
-        return result.token
+        user = auther_services.get_identity(username=username, password=password)
+        payload = {
+            "username": username,
+            "roles": list(user.roles),
+            "exp": datetime.today() + timedelta(days=365),
+        }
+        token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+        return token
 
     @classmethod
     def set_cookie(cls, cookie: str) -> None:
         callback_context.response.set_cookie("dash_cookie", cookie, max_age=DATETIME_ONE_YEAR)
-
-
-def get_user_role(jwt_payload) -> set:
-    user_roles = {group_name for group_name in []}  # noqa
-    user_roles.add(ROLE.USER)
-    return user_roles
