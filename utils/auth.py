@@ -3,14 +3,13 @@ import jwt
 from dash import callback_context
 
 from utils.auther_service import AutherService
-from utils.user import User, ROLE
+from utils.user import User
 from utils.page import Page
 from datetime import datetime, timedelta
+from user_log_pass import JWT_ALGORITHM, JWT_SECRET
 
 
-DATETIME_ONE_YEAR = 365 * 24 * 60 * 60 * 1000
-JWT_SECRET = "Tandem"  # Секретный ключ для подписи JWT
-JWT_ALGORITHM = "HS256"
+DATETIME_2_MONTHS =  60 * 24 * 60 * 60 * 1000
 
 auther_services = AutherService()
 
@@ -58,4 +57,4 @@ class AuthManager:
 
     @classmethod
     def set_cookie(cls, cookie: str) -> None:
-        callback_context.response.set_cookie("dash_cookie", cookie, max_age=DATETIME_ONE_YEAR)
+        callback_context.response.set_cookie("dash_cookie", cookie, max_age=DATETIME_2_MONTHS)

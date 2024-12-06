@@ -1,3 +1,6 @@
+JWT_SECRET = "Tandem"
+JWT_ALGORITHM = "HS256"
+
 USERS = {
     "admin": {
         "password": "admin123",
