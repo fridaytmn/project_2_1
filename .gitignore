@@ -4,3 +4,5 @@ venv*
 diff
 env
 __pycache__
+user_log_pass.py
+proba.py
