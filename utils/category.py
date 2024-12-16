@@ -1,5 +1,4 @@
 import importlib
-from utils.user import User
 from pathlib import Path
 from utils.pages import BaseProvider, get_module_name
 

@@ -106,10 +106,6 @@ def table_wrapper(columns=None):
 def table_actions(
     filter_value: str, included_columns: str, sort_by: list[dict], filter_query: str, data: list[dict]
 ) -> list[dict]:
-    """
-    Функция принимает данные и аргументы для их сортировки
-    Так же фильтрует спец символы в filter_value
-    """
     if filter_value is not None:
         filter_value = "".join(filter(is_character_non_special, filter_value))
     dataframe = pd.DataFrame(data)

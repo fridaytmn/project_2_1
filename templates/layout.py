@@ -6,7 +6,6 @@ from utils.category import categories_list_condition
 import pages
 import os
 import base64
-from utils.user import User
 
 LOGO_IMAGE = base64.b64encode(open(os.path.join("static/logo.svg"), "rb").read()).decode()
 

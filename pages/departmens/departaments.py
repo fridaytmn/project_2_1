@@ -6,15 +6,12 @@ from dash import html, dash_table
 import utils.table_format
 import pandas as pd
 from app import app
-import utils.user
 
 label = "Список подразделений"
 
 note = """
 В отчете отображается список подразделений в компании.
 """
-
-allowed_roles = {"ADMIN"}
 
 
 def get_content() -> list:

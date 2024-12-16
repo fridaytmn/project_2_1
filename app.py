@@ -3,8 +3,6 @@ import json_logging
 import utils.styles.themes
 import utils.styles.icons
 from pydantic import ValidationError
-from dash.dependencies import Input, Output
-
 
 app = dash.Dash(
     __name__,
@@ -31,21 +29,6 @@ def handle_error():
     }
 
 
-app.clientside_callback(
-    """function(is_error) {
-            if (is_error) {
-                oko.push({
-                    "n": "custom",
-                    "category": "error_view"
-                });
-            };
-        }""",
-    Output("event_custom_error_view", "children"),
-    Input("base-error", "is_open"),
-    prevent_initial_call=True,
-)
-
-
 @app.server.errorhandler(ValidationError)
 def handle_validation_error(error):
     error_field = str(error).split("\n")[1]
@@ -60,9 +43,3 @@ def handle_validation_error(error):
         },
         "multi": True,
     }
-
-
-@app.server.route("/liveness")
-@app.server.route("/readiness")
-def probe() -> dict:
-    return {"status": "ok"}

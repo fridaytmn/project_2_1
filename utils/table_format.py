@@ -3,10 +3,6 @@ import pandas as pd
 from dash.dash_table.Format import Format, Symbol
 from utils.table_wrapper import THUMBNAIL_COLUMN_NAME
 from dataclasses import dataclass
-from urllib.parse import quote
-
-MARKDOWN_COLUMN_REQUEST = "Запрос"
-MARKDOWN_COLUMN_DETAILS = "Подробнее"
 
 
 @dataclass
@@ -82,7 +78,6 @@ def generate(
         column_names = dataframe.columns
     if columns_with_suffix is None:
         columns_with_suffix = []
-    generate_url(dataframe)
     dtypes = dict(dataframe.dtypes)
     columns = [
         TableColumn(
@@ -90,7 +85,7 @@ def generate(
             type=str(dtypes[column_name]) if column_name in dtypes else "object",
             suffix=columns_suffix if column_name in columns_with_suffix else "",
             group_delimiter=group_delimiter,
-            is_markdown=column_name in {MARKDOWN_COLUMN_REQUEST, THUMBNAIL_COLUMN_NAME, MARKDOWN_COLUMN_DETAILS},
+            is_markdown=column_name == THUMBNAIL_COLUMN_NAME,
             is_thumbnail=column_name == THUMBNAIL_COLUMN_NAME,
         )
         for column_name in column_names
@@ -100,13 +95,6 @@ def generate(
         generate_columns(columns),
         generate_columns_styles(columns),
     )
-
-
-def generate_url(dataframe: pd.DataFrame):
-    for column in dataframe:
-        if column == MARKDOWN_COLUMN_REQUEST:
-            dataframe[column] = dataframe[column].apply(lambda x: f"""[{str(x).strip()}]({BASE_URL + quote(str(x))})""")
-    return dataframe
 
 
 def generate_columns(columns: List[TableColumn]) -> List:
@@ -209,8 +197,6 @@ def generate_row_fontweight_on_max_value_in_column(dataframe: pd.DataFrame, colu
 
 
 def generate_tooltip_data(data: pd.DataFrame, columns: list, note: str) -> list:
-    """Добавляет всплывающую заметку к каждой ячейки из 'columns',
-    текст заметки берется из колонки с названием 'note'"""
     tooltips_data = []
     for column in columns:
         for _, row in data.iterrows():
