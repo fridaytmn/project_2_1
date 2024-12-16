@@ -5,7 +5,7 @@ from dash import dcc
 label = "Техническое обслуживание"
 
 
-def get_content(params: dict):
+def get_content():
     return dbc.Alert(
         dcc.Markdown(
             """

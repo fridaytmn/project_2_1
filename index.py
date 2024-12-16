@@ -1,5 +1,4 @@
 from typing import Union
-import flask
 from utils.WSGIServerClass import WebServer
 from dash import html, ctx
 from dash.dependencies import Input, Output
@@ -10,10 +9,7 @@ import pages
 import templates.main
 import templates.layout
 import templates.page
-import templates.error
 import utils
-from utils.auth import AuthManager
-from utils.user import User
 
 app.layout = templates.main.render(app)
 
@@ -32,27 +28,8 @@ def get_page(pathname: str, pages_provider: utils.page.PageProvider = pages.page
     return get_page(page.get_permanent_redirect(), pages_provider)
 
 
-def render_page(page: Page, user: User) -> Union[html.Main, html.Div]:
-    if AuthManager.authorize(user=user, page=page):
-        return templates.layout.render(templates.page.render(page), user)
-    if user.roles == {"GUEST"}:
-        return templates.layout.render(
-            templates.error.render(
-                401,
-                [
-                    html.Label("Требуется авторизация"),
-                    html.A(" Вход", href=f"/login?return-url={page.get_short_path()}"),
-                ],
-            )
-        )
-    return templates.layout.render(
-        templates.error.render(
-            403,
-            [
-                html.Label("Недостаточно прав для просмотра отчета :("),
-            ],
-        )
-    )
+def render_page(page: Page) -> Union[html.Main, html.Div]:
+    return templates.layout.render(templates.page.render(page))
 
 
 @app.callback(
@@ -64,17 +41,10 @@ def render_page(page: Page, user: User) -> Union[html.Main, html.Div]:
 def display_page(_, pathname: str) -> (Union[html.Main, html.Div], bool):
     ctx.set_props(component_id="refresh-interval", props={"max_intervals": 0})
     page = get_page(pathname)
-    match [bool(page), page.is_archived() if page else False, os.environ.get("TECHNICAL_WORK_ENABLE") == "1"]:
-        case [_, _, True]:
+    match [bool(page), os.environ.get("TECHNICAL_WORK_ENABLE") == "1"]:
+        case [_, True]:
             page = get_page("technical_work")
-        case [False, _, False]:
-            return templates.layout.render(templates.error.render(404, "Отчет не найден :("))
-        case [True, True, False]:
-            return templates.layout.render(templates.error.render(423, "Отчет перемещен в архив"))
-    user = AuthManager.identify(cookie=flask.request.cookies.get("dash_cookie"))
-    if not AuthManager.authenticate(user=user):
-        user.roles = {"GUEST"}
-    return render_page(page, user)
+    return render_page(page)
 
 
 def start_server() -> None:

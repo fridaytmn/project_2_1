@@ -11,7 +11,7 @@ from utils.user import User
 LOGO_IMAGE = base64.b64encode(open(os.path.join("static/logo.svg"), "rb").read()).decode()
 
 
-def render(content, user: User | None = None):
+def render(content):
     nav = [
         dbc.DropdownMenu(
             label=category.get_label(),
@@ -19,7 +19,7 @@ def render(content, user: User | None = None):
             nav=True,
             align_end=True,
         )
-        for category in pages.categories_provider.filter(lambda c: categories_list_condition(c, user)).sort_natural(
+        for category in pages.categories_provider.filter(lambda c: categories_list_condition(c)).sort_natural(
             by_label_sort_key
         )
     ]

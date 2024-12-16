@@ -6,10 +6,7 @@ from utils.page import (
     SortType,
     pages_list_condition,
     by_label_sort_key,
-    by_hit_sort_key,
-    by_search_order_sort_key,
 )
-from utils.tag import Tag
 from dash.dependencies import Input, Output
 from app import app
 from urllib.parse import parse_qs
@@ -52,32 +49,21 @@ def get_reports(
 ):
     parsed_query_string = parse_qs(query_string.lstrip("?"))
 
-    tag_name = parsed_query_string.get("tag", [None])[0]
-    tag = Tag(tag_name) if tag_name is not None else None
-
     search_string = parsed_query_string.get("search", [None])[0]
 
     match sort_type_value:
         case SortType.BY_NAME.value:
             field_sorted_by = "label"
-            sort_key_func = by_label_sort_key
-            is_sort_reverse = False
         case SortType.BY_HIT.value:
             field_sorted_by = None
-            sort_key_func = by_hit_sort_key
-            is_sort_reverse = True
 
     match search_string:
         case None:
             founded_ids = None
         case _:
             founded_ids = pages.search("".join(filter(is_character_non_special, search_string)), field_sorted_by)
-            sort_key_func = by_search_order_sort_key(founded_ids)
-            is_sort_reverse = False
 
-    pages_sorted = pages.pages_provider.filter(
-        lambda p, tag=tag: pages_list_condition(p, tag, founded_ids)
-    ).sort_natural(key_func=sort_key_func, reverse=is_sort_reverse)
+    pages_sorted = pages.pages_provider.filter(lambda p: pages_list_condition(p, founded_ids))
     if query_string == "" or query_string == "?search=":
         return render_catalog(), {"border": "0px", "display": "none"}
     return render_search_result(pages_sorted=pages_sorted), {"border": "0px", "display": True}
@@ -88,15 +74,7 @@ def render_search_result(pages_sorted: list) -> list:
         dbc.Card(
             [
                 dbc.ListGroupItem(**generate_link(page=page)),
-                html.P(
-                    [
-                        dcc.Link(
-                            " #" + tag.value,
-                            href="?tag=" + tag.value,
-                        )
-                        for tag in page.get_tags()
-                    ]
-                ),
+                html.P(),
             ]
         )
         for page in pages_sorted

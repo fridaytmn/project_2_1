@@ -47,8 +47,7 @@ def get_legacy_build_wheel_path(
 
     if len(names) > 1:
         msg = (
-            f"Legacy build of wheel for {name!r} created more than one file.\n"
-            f"Filenames (choosing first): {names}\n"
+            f"Legacy build of wheel for {name!r} created more than one file.\n" f"Filenames (choosing first): {names}\n"
         )
         msg += format_command_result(command_args, command_output)
         logger.warning(msg)

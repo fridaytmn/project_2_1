@@ -1,5 +1,4 @@
 import importlib
-import utils
 from utils.user import User
 from pathlib import Path
 from utils.pages import BaseProvider, get_module_name
@@ -27,9 +26,6 @@ class Category:
     def get_subcategories(self) -> list:
         return self._subcategories
 
-    def get_allowed_groups(self) -> set:
-        return getattr(self._module, "allowed_groups", {})
-
 
 class CategoryProvider(BaseProvider[Category]):
     pass
@@ -54,14 +50,7 @@ def create_category(path: Path) -> Category:
     return Category(module, name, subcategories)
 
 
-def categories_list_condition(category: Category, user: User | None = None) -> bool:
-    if not category.is_hidden() and not category.get_allowed_groups():
+def categories_list_condition(category: Category) -> bool:
+    if not category.is_hidden():
         return True
-    if user is not None:
-        if (
-            not category.is_hidden()
-            and category.get_allowed_groups()
-            and (not category.get_allowed_groups().isdisjoint(user.roles) or user.username in utils.allowed_users)
-        ):
-            return True
     return False

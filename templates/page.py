@@ -16,19 +16,6 @@ def main_page(page: Page) -> dbc.Container:
 
 def report_page(page: Page) -> list:
     result = []
-    result.append(
-        html.Div(
-            [
-                dbc.Button(
-                    "Сообщить о проблеме",
-                    id="open_feedback_form",
-                    n_clicks=0,
-                ),
-                html.Div(id="feedback_form"),
-            ],
-            className="button-report",
-        ),
-    )
     if page.get_note() is not None:
         result.append(
             html.Div(
@@ -56,19 +43,6 @@ def report_page(page: Page) -> list:
             ),
         )
     result.append(html.H1(page.get_label(), className="title"))
-    if not page.is_tags_hidden():
-        result.append(
-            html.Div(
-                [
-                    dcc.Link(
-                        "#" + tag.value,
-                        href="/?tag=" + tag.value,
-                    )
-                    for tag in page.get_tags()
-                ],
-                className="title-tags",
-            )
-        )
     result.append(html.Div(page.get_content()))
     return result
 
