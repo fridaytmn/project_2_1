@@ -11,6 +11,6 @@ def set_timezone(dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe[column] = dataframe[column].dt.tz_localize(tz="Asia/Yekaterinburg")
     return dataframe
 
+
 def get_is_triggered(input_id: str) -> bool:
     return input_id in [prop["prop_id"] for prop in callback_context.triggered][0]
-
