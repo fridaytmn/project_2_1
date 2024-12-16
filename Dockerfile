@@ -12,7 +12,7 @@ COPY poetry.lock pyproject.toml /code/
 
 RUN python -m pip install poetry==1.8.3 \
     && poetry install --no-dev --no-root \
-    && poetry config virtualenvs.create false \
+    && poetry config virtualenvs.create false
 
 RUN apt-get autoremove -yqq --purge \
     && apt-get clean -yqq \
@@ -23,6 +23,8 @@ RUN apt-get autoremove -yqq --purge \
         /usr/share/man \
         /usr/share/doc \
         /usr/share/doc-base
+
+COPY . /code/
 
 EXPOSE 8050
 
