@@ -24,3 +24,13 @@ def get_active_staff():
     SELECT username, email, date_joined
     FROM users_user
     WHERE is_active = TRUE AND is_staff = TRUE"""
+
+@query(connector)
+def get_last_actions():
+    """Возвращает последние действия пользователя"""
+    return """
+    SELECT u.username, l.action_time, l.object_repr
+    FROM django_admin_log l
+    LEFT JOIN users_user u ON l.user_id = u.id
+    ORDER BY l.action_time DESC
+    LIMIT 50"""
