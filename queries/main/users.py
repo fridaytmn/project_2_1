@@ -34,3 +34,13 @@ def get_last_actions():
     LEFT JOIN users_user u ON l.user_id = u.id
     ORDER BY l.action_time DESC
     LIMIT 50"""
+
+@query(connector)
+def get_users_offline_6_month():
+    """Возвращает пользователей, которые не заходили полгода"""
+    return """
+    SELECT username, last_login
+    FROM users_user
+    WHERE last_login < NOW() - INTERVAL '6 months'
+    ORDER BY last_login ASC"""
+
