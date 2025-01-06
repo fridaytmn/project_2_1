@@ -16,3 +16,11 @@ def get_last_input_superusers():
     WHERE is_superuser IS NOT NULL
     AND NOT name = ''
     ORDER BY name"""
+
+@query(connector)
+def get_active_staff():
+    """Запрос возвращает список активных сотрудников"""
+    return """
+    SELECT username, email, date_joined
+    FROM users_user
+    WHERE is_active = TRUE AND is_staff = TRUE"""
